@@ -10,6 +10,7 @@ import { MinChar } from '../tools/shared.validators';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  name = ' ';
   listFan : Fan[] = []
   AjoutSerie:boolean=false
   SupSerie:boolean=false
@@ -44,5 +45,7 @@ export class HomeComponent implements OnInit {
   }
   modifS(indexF:number){
     this._service.ajoutSeries(this.myForm.value.Serie, indexF)
+    this.AjoutSerie= !this.AjoutSerie
+    this.name = ' ';
   }
 }

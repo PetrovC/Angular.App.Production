@@ -30,7 +30,7 @@
                 </ul>
                 <form [formGroup]="myForm" *ngIf="AjoutSerie">
                     <div >
-                        <p>Série à ajouter : <input type="text" formControlName="Serie"></p>
+                        <p>Série à ajouter : <input type="text" formControlName="Serie" [(ngModel)]="name"></p>
                         <p *ngIf="myForm.controls['Serie'].invalid">
                             {{myForm.controls['Serie'].errors ? myForm.controls['Serie'].errors['TropCourtError'] : ''}}
                         </p>
