@@ -1,4 +1,7 @@
 <p>Profils : </p>
+<div *ngIf="listFan.length == 0">
+    <p>Pas de profil à afficher !</p>
+</div>
 <div>
     <ul>
         <li *ngFor="let fan of listFan; let indexF = index"> 
