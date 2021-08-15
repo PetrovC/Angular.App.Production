@@ -1,0 +1,48 @@
+<p>Profils : </p>
+<div>
+    <ul>
+        <li *ngFor="let fan of listFan; let indexF = index"> 
+            {{fan.Name}}
+                <button mat-raised-button (click)="toggleVisibleD(indexF)">
+                    <span class="material-icons">manage_accounts</span>
+                    Détails / Mettre à jour
+                </button>
+            <div *ngIf="fan.VisibleD" id="hideD">
+                <p>Date de naissance : {{fan.DateB}}</p>
+                <ul>
+                    <p>Liste de séries :</p>
+                    <li *ngFor="let series of fan.ListS; let indexS= index">
+                        Série {{indexS+1}} : {{series}}
+                        <button mat-raised-button class="del" (click)="delAlert(indexS, indexF)">
+                            <span class="material-icons">delete</span>
+                        </button>
+                    </li>
+                        <div *ngIf="SupSerie" class="alert">
+                            <p class="alerttext">La série {{listFan[iF].ListS[iS]}} va etre supprimé </p>
+                            <button mat-raised-button (click)="delSeries()" class="alertbtn">
+                                <span class="material-icons">done</span>
+                            </button>
+                        </div>
+                        <button mat-raised-button type="button" (click)="ToSerie()" id="ajout">
+                            <span class="material-icons">add</span>
+                            Ajouter une série
+                        </button>
+                </ul>
+                <form [formGroup]="myForm" *ngIf="AjoutSerie">
+                    <div >
+                        <p>Série à ajouter : <input type="text" formControlName="Serie"></p>
+                        <p *ngIf="myForm.controls['Serie'].invalid">
+                            {{myForm.controls['Serie'].errors ? myForm.controls['Serie'].errors['TropCourtError'] : ''}}
+                        </p>
+                    </div>
+                        <button mat-raised-button (click)="modifS(indexF)" [disabled]="!myForm.valid">
+                            <span class="material-icons">done</span>
+                            Ajouter
+                        </button>
+                </form>
+            </div>
+        </li>
+    </ul>
+</div>
+
+

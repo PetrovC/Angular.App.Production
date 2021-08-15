@@ -1,0 +1,11 @@
+<h3>Menu : </h3>
+<ul>
+    <li *ngFor="let link of listeLien">
+        <div>
+            <button mat-raised-button [routerLink]="link.url">
+                <span class="material-icons">{{link.icon}}</span>
+                {{link.title}}
+            </button>
+        </div>
+    </li>
+</ul>
